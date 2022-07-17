@@ -1,0 +1,74 @@
+{
+  "name": "quick-note",
+	"displayName": "quick-note",
+	"description": "Quickly create new files in a 'scratch notes' directory",
+	"version": "0.0.1",
+	"engines": {
+		"vscode": "^1.69.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+        "onCommand:quick-note.newNote",
+				"onCommand:quick-note.newNoteWithLanguage"
+	],
+	"main": "./dist/extension.js",
+	"extensionKind": ["workspace"],
+	"contributes": {
+		"commands": [
+			{
+				"command": "quick-note.newNote",
+				"title": "Quick Note: New Note "
+			},
+			{
+				"command": "quick-note.newNoteWithLanguage",
+				"title": "Quick Note: New Note with Language"
+			}
+		],
+		"configuration": {
+			"title": "Quick Note",
+			"properties": {
+				"quick-note.notesDirectory": {
+					"type": "string",
+					"default": "",
+					"markdownDescription": "The directory in which to store scratch notes. May use the tilde character `~` to refer to the user's home directory.",
+					"scope": "machine-overridable"
+				}
+			}
+		},
+		"keybindings": [
+			{
+				"command": "quick-note.newNote",
+				"key": "ctrl+K ctrl+N"
+			},
+			{
+				"command": "quick-note.newNoteWithLanguage",
+				"key": "ctrl+K ctrl+shift+N"
+			}
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run package",
+		"compile": "webpack",
+		"watch": "webpack --watch",
+		"package": "webpack --mode production --devtool hidden-source-map",
+		"lint": "eslint src --ext ts"
+	},
+	"devDependencies": {
+		"@types/vscode": "^1.69.0",
+		"@types/glob": "^7.2.0",
+		"@types/mocha": "^9.1.1",
+		"@types/node": "16.x",
+		"@typescript-eslint/eslint-plugin": "^5.30.0",
+		"@typescript-eslint/parser": "^5.30.0",
+		"eslint": "^8.18.0",
+		"glob": "^8.0.3",
+		"mocha": "^10.0.0",
+		"typescript": "^4.7.4",
+		"ts-loader": "^9.3.1",
+		"webpack": "^5.73.0",
+		"webpack-cli": "^4.10.0",
+		"@vscode/test-electron": "^2.1.5"
+	}
+}
