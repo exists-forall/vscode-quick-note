@@ -162,16 +162,17 @@ export function activate(context: vscode.ExtensionContext) {
 		// Create a quick pick list of all languages
 		const languagePicks = [];
 		for (const [id, info] of languageInfo) {
-			languagePicks.push({ label: info.name, description: id });
+			languagePicks.push({ label: info.name, description: `(${id})`, id });
 		}
 		// Show the quick pick list
 		const languagePick = await vscode.window.showQuickPick(languagePicks, {
+			title: "New Note with Language",
 			placeHolder: "Select a language",
 		});
 		if (languagePick === undefined) {
 			return;
 		}
-		const languageId = languagePick.description;
+		const languageId = languagePick.id;
 		await createNote(languageId, languageInfo.get(languageId)!.extension);
 	});
 	context.subscriptions.push(disposable);
