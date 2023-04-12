@@ -3,6 +3,10 @@
 	"displayName": "quick-note",
 	"description": "Quickly create new files in a 'scratch notes' directory",
 	"version": "0.0.1",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/exists-forall/vscode-quick-note.git"
+	},
 	"engines": {
 		"vscode": "^1.69.0"
 	},
